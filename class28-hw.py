@@ -120,17 +120,16 @@ print(merge([1, 1, 3, 6], [2, 8, 9]))  # [1, 1, 2, 3, 6, 8, 9]
 def remove_duplicates(nums: list) -> list:
         track_index = 0
         pos_index = 0
-        while True:
-            if track_index == len(nums) - 1:
+        while track_index != len(nums) - 1:
+            
+            if nums[track_index] != nums[track_index + 1]:
                 nums[pos_index], nums[track_index] = nums[track_index], nums[pos_index]
-                return pos_index + 1
-            elif nums[track_index] == nums[track_index + 1]:
-                track_index += 1
-            else:
-                nums[pos_index], nums[track_index] = nums[track_index], nums[pos_index]
-                track_index += 1
                 pos_index += 1
-        
-                   
+            
+            track_index += 1 
+
+        nums[pos_index], nums[track_index] = nums[track_index], nums[pos_index]
+        return pos_index + 1
+                     
                 
 print(remove_duplicates([1, 1, 1, 2, 2, 3, 4, 4, 5]))
