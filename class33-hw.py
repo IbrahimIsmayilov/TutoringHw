@@ -21,8 +21,8 @@ class Dictionary():
         for kv_idx in range(len(self.hash_table[hashed_idx])):
             if self.hash_table[hashed_idx][kv_idx][0] == key_target:
                 return kv_idx
-        return - 1
-    
+        return -1
+
     # Time complexity O(N), where N is the length of the inner list, that is located at hash_table[hashed_idx]. Linear time complexity
     def add(self, key, value):
         hashed_idx = Dictionary.__hash__(key)
@@ -50,6 +50,10 @@ class Dictionary():
         else:
             raise KeyError
         
+    # Time complexity O(1), constant time complexity
+    def __str__(self):
+        return self.hash_table
+        
         
     
             
@@ -60,7 +64,7 @@ class Dictionary():
 
     
 test_dictionary = Dictionary()
-print(test_dictionary.hash_table)  # empty list with 1000 inner sub lists
+print(test_dictionary)  # empty list with 1000 inner sub lists
 print(test_dictionary.__hash__(0))  # 0
 print(test_dictionary.__hash__(1000))  # 0
 test_dictionary.add(0, '1')  
