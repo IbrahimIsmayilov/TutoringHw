@@ -23,11 +23,14 @@ class Dictionary():
         hashed_idx = Dictionary.__hash__(key)
         self.hash_table[hashed_idx].append((key, value))
     
-    # def remove(self, key):
-    #     hashed_idx = Dictionary.__hash__(key)
-    #     kv_idx = self.find_kv_idx(self, hashed_idx, key)
-    #     if kv_idx != - 1:
-    #         self.hash_table[hashed_idx][kv_idx], self.hash_table[hashed_idx][-1]
+    def remove(self, key):
+        hashed_idx = Dictionary.__hash__(key)
+        kv_idx = self.find_kv_idx(hashed_idx, key)
+        if kv_idx != - 1:
+            self.hash_table[hashed_idx][kv_idx], self.hash_table[hashed_idx][-1] = self.hash_table[hashed_idx][-1], self.hash_table[hashed_idx][kv_idx]
+            self.hash_table.pop()
+        else:
+            raise KeyError
             
 
         
@@ -37,9 +40,14 @@ class Dictionary():
     
 test_dictionary = Dictionary()
 print(test_dictionary.hash_table)
-print(test_dictionary.__hash__(10004353453))
-test_dictionary.add(1000435345, 1)
-print(test_dictionary.hash_table[453])
+print(test_dictionary.__hash__(0))
+print(test_dictionary.__hash__(1000))
+test_dictionary.add(0, '1')
+print(test_dictionary.hash_table[0])
+test_dictionary.add(1000, '2')
+print(test_dictionary.hash_table[0])
+print(test_dictionary.find_kv_idx(0, 1000))
+
 
 # Question
 # You are given a string of paranthesis, you need to decide if that is a valid set of paranthesis.
