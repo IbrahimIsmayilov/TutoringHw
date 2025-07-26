@@ -61,13 +61,6 @@ class Dictionary():
     # Time complexity O(1), constant time complexity
     def __str__(self):
         return f'{self.hash_table}'
-        
-        
-    
-            
-
-        
-
     
 
     
@@ -127,11 +120,37 @@ print(is_valid(")())")) # False
 print(is_valid("(()))")) # False
 
 # Question
+# Steps 1: To create a dynamic implementation that uses recursion, a function to find all sum combination should be created that considers both 1 + 3 and 3 + 1 as different solution to get 4. 
+# Step 2: Add base case to stop recursion
+# Step 3: Create a dictionary to keep a record of all summing combinations, so the summing combinations of 3 in 3 + 6 and 3 + 3 + 3 are not recounted. 
+# Step 4: Create a total variable to keep track of how many times the function runs with or without dictionary to see if it is implemented correclty
+
+
+
 # For number n count the number of ordered sums till n.
+
+
+    
 def ordered_sums(n: int) -> int:
-    pass
+    total_combos_Set = set()
+    if n == 1:
+        return combos
+    
+    
+    for num in range(1, n):
+        combos.app
+        combos_set.add((ordered_sums(num) + (ordered_sums(n - num))))
+    return len(combos_set)
+
+
+
+print(ordered_sums(4)) # 7
+
+        
 
 # Ex: 
+ordered_sums(4) # -> 7
+ordered_sums(4) # -> 7
 ordered_sums(4) # -> 7
 #1+1+1+1
 #1+1+2
@@ -140,3 +159,7 @@ ordered_sums(4) # -> 7
 #2+2
 #1+3
 #3+1
+
+ordered_sums(3) 
+
+
