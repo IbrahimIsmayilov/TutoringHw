@@ -8,6 +8,7 @@
 # Main dictionary operations: adding, removing, updating
 class Dictionary():
 
+    # Time complexity O(1), constant time complexity
     def __init__(self):
         self.hash_table = [[]] * 1000
 
@@ -23,6 +24,7 @@ class Dictionary():
                 return kv_idx
         return -1
     
+    # Time complexity O(N), where N is the length of the inner list, that is located at hash_table[hashed_idx]. Linear time complexity
     def check_key_existence(self, key):
         hashed_idx = Dictionary.__hash__(key)
         kv_idx = self.find_kv_idx(hashed_idx, key)
@@ -34,9 +36,9 @@ class Dictionary():
     # Time complexity O(N), where N is the length of the inner list, that is located at hash_table[hashed_idx]. Linear time complexity
     def add(self, key, value):
         try:
-            hashed_idx, kv_idx = self.check_key_existence(key)
+            self.check_key_existence(key)
         except KeyError:
-            hashed_idx
+            hashed_idx = Dictionary.__hash__(key)
             self.hash_table[hashed_idx].append((key, value))
 
     
@@ -47,11 +49,15 @@ class Dictionary():
         self.hash_table[hashed_idx].pop()
 
         
+    # Time complexity O(N), where N is the length of the inner list, that is located at hash_table[hashed_idx]. Linear time complexity
     def update_key(self, key, value):
         hashed_idx, kv_idx = self.check_key_existence(key)
         self.hash_table[hashed_idx][kv_idx] = (key, value)
 
-       
+    def print_kv_pair(self, key):
+        hashed_idx, kv_idx = self.check_key_existence(key)
+        print(self.hash_table[hashed_idx][kv_idx])
+
     # Time complexity O(1), constant time complexity
     def __str__(self):
         return f'{self.hash_table}'
@@ -70,14 +76,15 @@ print(test_dictionary)  # empty list with 1000 inner sub lists
 print(test_dictionary.__hash__(0))  # 0
 print(test_dictionary.__hash__(1000))  # 0
 test_dictionary.add(0, '1')  
-print(test_dictionary.hash_table[0])  # [(0, '1')]
+test_dictionary.print_kv_pair(0)  # (0, '1')
 test_dictionary.add(1000, '2')
-print(test_dictionary.hash_table[0])   # [(0, '1'), (1000, '2')]
+test_dictionary.print_kv_pair(1000)   # (1000, '2')
 print(test_dictionary.find_kv_idx(0, 1000))  # 1
 test_dictionary.remove(1000)
 print(test_dictionary.hash_table[0])   # [(0, '1')]
 test_dictionary.update_key(0, '5')
 print(test_dictionary.hash_table[0])   # [(0, '5')]
+test_dictionary.print_kv_pair(9000)   # KeyError
 
 
 # Question
