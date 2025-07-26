@@ -22,37 +22,39 @@ class Dictionary():
             if self.hash_table[hashed_idx][kv_idx][0] == key_target:
                 return kv_idx
         return -1
-
-    # Time complexity O(N), where N is the length of the inner list, that is located at hash_table[hashed_idx]. Linear time complexity
-    def add(self, key, value):
+    
+    def check_key_existence(self, key):
         hashed_idx = Dictionary.__hash__(key)
         kv_idx = self.find_kv_idx(hashed_idx, key)
         if kv_idx == -1:
-            self.hash_table[hashed_idx].append((key, value))
-        else:
             raise KeyError
+        else:
+            return hashed_idx, kv_idx
+
+    # Time complexity O(N), where N is the length of the inner list, that is located at hash_table[hashed_idx]. Linear time complexity
+    def add(self, key, value):
+        try:
+            hashed_idx, kv_idx = self.check_key_existence(key)
+        except KeyError:
+            hashed_idx
+            self.hash_table[hashed_idx].append((key, value))
+
     
     # Time complexity O(N), where N is the length of the inner list, that is located at hash_table[hashed_idx]. Linear time complexity
     def remove(self, key):
-        hashed_idx = Dictionary.__hash__(key)
-        kv_idx = self.find_kv_idx(hashed_idx, key)
-        if kv_idx != - 1:
-            self.hash_table[hashed_idx][kv_idx], self.hash_table[hashed_idx][-1] = self.hash_table[hashed_idx][-1], self.hash_table[hashed_idx][kv_idx]
-            self.hash_table[hashed_idx].pop()
-        else:
-            raise KeyError
+        hashed_idx, kv_idx = self.check_key_existence(key)
+        self.hash_table[hashed_idx][kv_idx], self.hash_table[hashed_idx][-1] = self.hash_table[hashed_idx][-1], self.hash_table[hashed_idx][kv_idx]
+        self.hash_table[hashed_idx].pop()
+
         
     def update_key(self, key, value):
-        hashed_idx = Dictionary.__hash__(key)
-        kv_idx = self.find_kv_idx(hashed_idx, key)
-        if kv_idx != - 1:
-            self.hash_table[hashed_idx][kv_idx] = (key, value)
-        else:
-            raise KeyError
-        
+        hashed_idx, kv_idx = self.check_key_existence(key)
+        self.hash_table[hashed_idx][kv_idx] = (key, value)
+
+       
     # Time complexity O(1), constant time complexity
     def __str__(self):
-        return self.hash_table
+        return f'{self.hash_table}'
         
         
     
