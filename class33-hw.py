@@ -28,7 +28,7 @@ class Dictionary():
         kv_idx = self.find_kv_idx(hashed_idx, key)
         if kv_idx != - 1:
             self.hash_table[hashed_idx][kv_idx], self.hash_table[hashed_idx][-1] = self.hash_table[hashed_idx][-1], self.hash_table[hashed_idx][kv_idx]
-            self.hash_table.pop()
+            self.hash_table[hashed_idx].pop()
         else:
             raise KeyError
             
@@ -39,14 +39,16 @@ class Dictionary():
 
     
 test_dictionary = Dictionary()
-print(test_dictionary.hash_table)
-print(test_dictionary.__hash__(0))
-print(test_dictionary.__hash__(1000))
-test_dictionary.add(0, '1')
-print(test_dictionary.hash_table[0])
+print(test_dictionary.hash_table)  # empty list with 1000 inner sub lists
+print(test_dictionary.__hash__(0))  # 0
+print(test_dictionary.__hash__(1000))  # 0
+test_dictionary.add(0, '1')  
+print(test_dictionary.hash_table[0])  # [(0, '1')]
 test_dictionary.add(1000, '2')
-print(test_dictionary.hash_table[0])
-print(test_dictionary.find_kv_idx(0, 1000))
+print(test_dictionary.hash_table[0])   # [(0, '1'), (1000, '2')]
+print(test_dictionary.find_kv_idx(0, 1000))  # 1
+test_dictionary.remove(1000)
+print(test_dictionary.hash_table[0])   # [(0, '1')]
 
 
 # Question
