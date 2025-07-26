@@ -84,27 +84,47 @@ test_dictionary.remove(1000)
 print(test_dictionary.hash_table[0])   # [(0, '1')]
 test_dictionary.update_key(0, '5')
 print(test_dictionary.hash_table[0])   # [(0, '5')]
-test_dictionary.print_kv_pair(9000)   # KeyError
+# test_dictionary.print_kv_pair(9000)   # KeyError
 
 
 # Question
 # You are given a string of paranthesis, you need to decide if that is a valid set of paranthesis.
 
-def is_valid(paranthesis: str) -> bool:
-    pass
+# Steps:
+# 1. We need to find the first opening paranthesis and add it to our stack of opening parantheses.
+# 2. While iterating through the string, we are looking for a closing paranthesis that will be paired with the opening paranthesis found in step 1 and label them as a a couple of parantheses by popping the opening paranthesis from the end of the stack. If on our search for a closing paranthesis, we find another opening paranthesis, we append it to our stack and it becomes the opening that takes priority when a closing paranthesis is found to couple them together. 
+# 3. Once done iterating though all parantheses, return true if there are no opening parantheses left that have yet to find a closing paranthesis to couple together. Else, if there are any left, it is invalid and return False. If in any case, before encountering an open paranthesis while the stack is empty we encounter a closing paranthesis first, the parantheses are labeled invalid and an IndexError is captured. In a valid set of parantheses, a closing paranthesis can never come before an opening paranthesis. 
+
+# Time complexity O(N), where N is the length of the string parantheses
+def is_valid(parantheses: str) -> bool:
+    opening_parantheses_stack  = []
+    try:
+        for paranthesis in parantheses:
+            if paranthesis == "(":
+                opening_parantheses_stack.append(paranthesis)
+            else:
+                opening_parantheses_stack.pop()
+        return not opening_parantheses_stack
+    
+    except IndexError:
+        return False
+
+
 
 # You need to use stack here.
 # You need to use python list to solve this problem.
 
+
 # Examples:
-#print(is_valid("()"))
-#print(is_valid("()()"))
-#
-#print(is_valid("(()())"))   # yes
-#print(is_valid("(()())()")) # yes
-#
-#print(is_valid("(()(")) # no
-#print(is_valid(")())")) # no
+print(is_valid("()"))  # True
+print(is_valid("()()"))  # True
+
+print(is_valid("(()())"))   # True
+print(is_valid("(()())()")) # True
+
+print(is_valid("(()(")) # False
+print(is_valid(")())")) # False
+print(is_valid("(()))")) # False
 
 # Question
 # For number n count the number of ordered sums till n.
