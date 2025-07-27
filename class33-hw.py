@@ -121,31 +121,39 @@ print(is_valid("(()))")) # False
 
 # Question
 # Steps 1: To create a dynamic implementation that uses recursion, a function to find all sum combination should be created that considers both 1 + 3 and 3 + 1 as different solution to get 4. 
-# Step 2: Add base case to stop recursion
-# Step 3: Create a dictionary to keep a record of all summing combinations, so the summing combinations of 3 in 3 + 6 and 3 + 3 + 3 are not recounted. 
-# Step 4: Create a total variable to keep track of how many times the function runs with or without dictionary to see if it is implemented correclty
+# Step 2: Add base case to stop recursion and recursively call function
+# Step 3: Create a dictionary to keep a record of all summing combinations, so the summing combinations of 3 in 3 + 6 and 3 + 3 + 3 are not recounted. Also put these different combos in a set so that (1 + 1 + 1 + ...1) is not recounted. 
+# Step 4: Just get len(set) to
+
 
 
 
 # For number n count the number of ordered sums till n.
 
 
-    
+combos_dict = {}
+combos_dict[1] = set()
+combos_dict[2] = {(1, 1)}
+combos_dict[3] = {(1, 1, 1), (1, 2), (2, 1)}
+
 def ordered_sums(n: int) -> int:
-    total_combos_Set = set()
-    if n == 1:
-        return combos
-    
+    total = 0
+    if n in combos_dict:
+        return combos_dict[n]
     
     for num in range(1, n):
-        combos.app
-        combos_set.add((ordered_sums(num) + (ordered_sums(n - num))))
-    return len(combos_set)
+        combos_dict[n] = combos_dict.get(n, set())
+        combos_dict[n].add((num, (n - num)))
+        combos_dict[n].add((ordered_sums(num) | ordered_sums(n - num)))
+    
+    
+    return combos_dict[n]
 
 
-
-print(ordered_sums(4)) # 7
-
+print(ordered_sums(4))
+# 1 + 1 + 1
+# 1 + 2
+# 2 + 1
         
 
 # Ex: 
