@@ -90,15 +90,14 @@ print(test_dictionary.hash_table[0])   # [(0, '5')]
 
 # Time complexity O(N), where N is the length of the string parantheses
 def is_valid(parantheses: str) -> bool:
-    opening_parantheses_stack  = []
     try:
+        opening_parantheses_stack  = []
         for paranthesis in parantheses:
             if paranthesis == "(":
                 opening_parantheses_stack.append(paranthesis)
             else:
                 opening_parantheses_stack.pop()
         return not opening_parantheses_stack
-    
     except IndexError:
         return False
 
@@ -140,7 +139,7 @@ def ordered_sums(n: int) -> int:
     total = 0
     if n in combos_dict:
         return combos_dict[n]
-    
+     
     for num in range(1, n):
         combos_dict[n] = combos_dict.get(n, set())
         combos_dict[n].add((num, (n - num)))
