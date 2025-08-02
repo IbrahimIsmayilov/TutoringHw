@@ -72,3 +72,34 @@ def bigger_right(lst):
 
 # Leetcode
 # 1. https://leetcode.com/problems/pascals-triangle/description/
+
+# Step 1: Intialize a new list that will always start with the same intial first element
+# Step 2: Intialize a count variable to keep track of how many new lists to add
+# Step 3: Create an iteration to run until count exceedx the amount of times the user has suggested
+# Step 4: Increment the count variable inside the iteration. Set up the framework of the new list that will be added. This includes adding a new list element with an intial value of 1. 
+# Step 5: While the beginning and end portion of the inner lists always remain the same after the first element, beginning and ending with 1, the middle portion is the tricky part. This means that given after the first element, we already know the first and last elements of the list take up 2 spaces. We also know that the length of a list element always equals count, as in the first list will have one element, second will have 2, and so forth. These patterns tell us that the middle portion will always take up count - 2 (beginning and ending 1) amount of space after the first element.
+# Step 6: Run a new iteration the length of our middle portion amount of times to search inside the preceding list and add the sum of the 2 numbers directly above it. 
+# Step 7: Add and close the list with a 1.
+# Step 8: Return the list.
+
+# Leetcode accepted the solution.
+
+
+# Time complexity: O(N**2) amount of times, where N equals numRows. Quadratic growth rate. 
+def generate(numRows: int) -> list[list[int]]:
+    new_lst = [[1]]
+    count = 1
+    while count < numRows:
+        count += 1
+        new_lst.append([])
+        new_lst[-1].append(1)
+        for idx in range(count - 2):
+            new_lst[-1].append(new_lst[-2][idx] + new_lst[-2][idx + 1])
+        new_lst[-1].append(1)
+
+    return new_lst 
+
+
+print(generate(5))  # [[1], [1, 1], [1, 2, 1], [1, 3, 3, 1], [1, 4, 6, 4, 1]]
+        
+        
