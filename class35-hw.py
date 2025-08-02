@@ -1,9 +1,17 @@
 # TODO There is a command line tool called "grep". Use the "man" command to learn more about grep. 
 # - Give couple of examples how you would use grep command
-# - Give couple of flags that you liked about grep command and describe in your own words what they do.
+# Going through a bunch of files I am tracking, I want to find which lesson we discussed the time complexity of the built-in remove function of a list. I would use the grep command and have it search for a file containing the remove() function. If I wanted to find a leetcode question but I forgot which file/lesson it was in, I could run the grep command with the string "leetcode" to find all files containing that string. I am currently tracking all files/lesson in git so it would search through all of them. Or if I wanted to find the lesson recordings that discussed hash tables I could run the grep command to get the lesson/file number which would greatly aid in finding the right recording to analyze further. 
 
-# TODO Create a Github repository for assignment1, make and initial commit and write down your link to the repo down below.
+# - Give couple of flags that you liked about grep command and describe in your own words what they do.
+# Untracked - Sometimes you do not want to push and commit all changes, and so you do not track all the files. Some files just have code you used almost as a scratch pad. However, to find something in that scratchpad, you would use untracked. 
+# --text - Really useful for just searching for a keyword. If we discussed the remove function but we never implemented it, it would more useful to search for the remove keyword instead of the remove function.
+# --files-without-match - To return me files where I only implement classes or methods that I will use in a project, I would run this with a main() arguement to return me all files where a main() command is not run. 
+
+
+# TODO Create a Github repository for assignment1, make an initial commit and write down your link to the repo down below.
 # Start working on your assingment ASAP. It is not trivial and needs lots of work.
+# https://github.com/IbrahimIsmayilov/Assignment1.git
+
 
 # Question (Bigger right)
 # We look at this quesiton during the class and said that the time complexity of the solution below is n ** 2
