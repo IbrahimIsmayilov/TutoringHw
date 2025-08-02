@@ -12,27 +12,39 @@
 # Try to solve the question using stack. Describe all your steps challenges in great detail!!!!
 
 # Step 1: Create a stack implementation list and intialize it
-# Step 2: Create an empty list and intialize it to return at the end
-# Step 3: Iterate through the given list and begin with adding the first element to the stack
-# Step 4: Continue iterating through the list and adding the elements to the stack. After adding the first element, check if second element is greater than first element. If not, compare third element with second element and so forth. The priority with which element to compare changes as you add more elements to the stack
-# Step 5: If you find a greater element than top of stack, append to the empty list len(stack) amount of times. Pop as you remove from the stack
-# Step 7: Continue until the end of the list. Stop before checking the last index and append -1 to the result list
-# Step 8: Return list
+# Step 2: Create an empty list and intialize it to return at the end. 
+# Step 3: Iterate through the given list and begin with adding elements to the stack and the created list
+# Step 4: Continue iterating through the list and adding the indexes of elements to the stack and list. After adding the first element, check if second element is greater than first element. If not, compare third element with second element and so forth. The priority with which element to compare changes as you add more elements to the stack.
+# Step 5: If you find a greater element than the index at the top of the stack, pop from the stack. Catch the returned index value and replace the index in the created list with the greater element until the stack is empty or the element referenced by the index at the stack is greater. If the element referenced by the stack is greater, break the while loop as logically it means that all other elements referenced by the stack are greater too.
+# Step 7: Continue until the end of the loop. Stop before checking the last index.
+# Step 8: Add a -1 to the created list because the last value in the list will never find any element greater.
+# Step 9: To ensure all elements that did not have greater elements to their right are assigned -1, pop from the stack until it is empty, catch the returned indexes and replace them with -1. 
+# Step 8: Return the created list
 
 
+# Time Complexity: O(N), where N = length of the given list. Linear time complexity. Worst Case: Roughly O(2N).
 def bigger_right(lst: list) -> list:
     stack_lst = []
     result_lst = []
     for idx in range(len(lst) -1):
-        stack_lst.append(lst[idx])
-        if lst[idx + 1] > stack_lst[-1]:
-            while len(stack_lst) > 0:
-                result_lst.append(lst[idx + 1])
-                stack_lst.pop()
+        stack_lst.append(idx)
+        result_lst.append(lst[idx])
+        while len(stack_lst) > 0 and lst[idx + 1] > lst[stack_lst[-1]]:
+            result_lst[stack_lst.pop()] = lst[idx + 1]
 
+                    
     result_lst.append(-1)
-    return result_lst
+    while len(stack_lst) != 0:
+        result_lst[stack_lst.pop()] = -1
             
+
+    return result_lst 
+
+
+        
+print(bigger_right([5, 4, 3, 2, 1, 6]))  # [6, 6, 6, 6, 6, -1]
+print(bigger_right([1, 4, 3, 2, 9, 0, 3, 1, 10, 4, 1]))  # [4, 9, 9, 9, 10, 3, 10, 10, -1, -1, -1]
+
             
         
 
