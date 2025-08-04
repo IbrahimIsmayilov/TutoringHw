@@ -36,14 +36,12 @@ def bigger_right(lst: list) -> list:
     result_lst = []
     for idx in range(len(lst) -1):
         stack_lst.append(idx)
-        result_lst.append(lst[idx])
+        result_lst.append(-1)
         while len(stack_lst) > 0 and lst[idx + 1] > lst[stack_lst[-1]]:
             result_lst[stack_lst.pop()] = lst[idx + 1]
-
-                    
+             
     result_lst.append(-1)
-    while len(stack_lst) != 0:
-        result_lst[stack_lst.pop()] = -1
+
             
 
     return result_lst 

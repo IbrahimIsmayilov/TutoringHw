@@ -287,3 +287,17 @@ print(bigger_right([2, 3, 4, 9, 1, 3]))
 
 
 
+def fib(n: int):
+    first_num = 0
+    second_num = 1
+    fib_num = 1
+    for i in range(n - 1):
+        fib_num = first_num + second_num
+        second_num = first_num
+        first_num = fib_num
+
+    return fib_num
+
+
+
+print(fib(2))
