@@ -1,0 +1,68 @@
+# Question
+# What is a CPU?
+# Central Processing Unit is responsible for carrying out instructions, performing mathematical operations, and executing programs one line at a time. It gets the instruction, or which line to execute, from the Random Access Memory and then sends the result back to the RAM which is then sent to the Permanent Storage. A CPU can have many cores, meaning they can do more tasks at once and this is often the determining factor in the price.
+
+# Question
+# What is RAM?
+# RAM or Random Access Memory is a temporary storage that communicates between the Permanent Storage and the Central Processing Unit. Unlike Permanent Storages, Random Access Memory gets wiped after a session. Whenever any code is executed, it is a constant communication between RAM and the CPU, until the whole program is run. Programs are stored in the RAM while they are run. 
+
+# Question
+# What is computer storage?
+# Computer storage is a physical piece of hardware within a computer where data can be stored permanently throughout different sessions. Unlike RAM, it does not lose any of its data when the computer is powered off, and it sends data to RAM which is then sent to the CPU whenever the computer runs any program.  
+
+# Question
+# Where are computer files saved at?
+# Computer files are saved in the computer storage, within a local hard drive. 
+
+# Question
+# Where are process variables saved at?
+# Process variables are saved in the RAM or Random Access Memory.
+
+
+# Question
+# What is the difference between a program and a process?
+# Give an example for each.
+# A program is compromised of instructions for the computer and when it is run, a process or an instance of the program is created. Each instance has it owns dedicated memory space and resources allocated. Multiple processes can be created from a single program. An example of a program would be Visual Studio Code which is an IDE in which typically one folder and files within are available to code in. If I were to code in 2 different folders, I would have to open Visual Studio Code again and choose a different folder, hence causing there to now be 2 processes running of the same program, Visual Studio Code.
+
+# Question
+# Explain the ineration between CPU, RAM and Storage during the program's execution.
+# When any process is created, the RAM must get necessary files from the Storage that will need the logical abilities of the CPU. Line by line, the CPU processes and performs necessary calculations for the RAM and sends it back. The RAM then either has the choice to keep the file processed by CPU if any further operations are needed by the CPU or to send it back to slow storage for permanent use.
+
+# Question
+# Name couple of companies that produced CPUs.
+# Give example of CPUs for each such company.
+# Intel, Example: Intel Core CPUS, Core 3, Core 5, Core 7 and the latest Core 9
+# AMD, Example: Ryzen 9000 series, Ryzen 7000 series
+# Qualcomm, Example: Snapdragon models in phones
+# Samsung, Example: Exynos phone processors which are technically cpus
+
+# Question
+# 1. What CPU does your computer have?
+# M2
+# 2. How much memory does your computer have?
+# 8 GB
+# 3. How much storage does your computer have?
+# 245.11 GB
+
+# However you found answer to the above, good job. Now search the internet to find if there exists a command line tool to answer above 3 
+# questions. Use them an try to understand their output.
+
+
+# Question
+def count_occurence(lst: list[int], target: int) -> int:
+    pass
+
+# Below are 2 ways in which you can implement count_occurence in a reccursive manner. Implement each of them individually.
+# As everything else, even if you cannot get the final answer, I expect you to submit the code that does not work (something is better than nothing).
+# Option 1
+# 1. How many times does target occur in the rest of the list after the first element?
+# 2. Add 1 if the first element matches the target, otherwise 0, to the answer from the smaller question.
+# 3. When the list is empty, return 0
+
+# Option 2
+# 1. How many times does target occur in the rest of the list after the first element?
+# 2. Add 1 if the first element matches the target, otherwise 0, to the answer from the smaller question.
+# 3. When the list is empty, return 0
+
+# Leetcode
+# 1. https://leetcode.com/problems/baseball-game/description/

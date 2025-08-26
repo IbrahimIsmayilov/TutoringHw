@@ -30,6 +30,19 @@
 # Step 8: Return the created list
 
 
+def is_palindrome(string: str):
+    if len(string) == 2:
+        return string[0] == string[1]
+    
+    if len(string) == 1:
+        return True
+    
+
+    return is_palindrome(string[(len(string) // 2 - 1):(len(string) // 2) + 1]) == is_palindrome(string[:(len(string) // 2)] + string[len(string) // 2 + 1:])
+
+print(is_palindrome('abba'))
+    
+
 # Time Complexity: O(N), where N = length of the given list. Linear time complexity. Worst Case: Roughly O(2N).
 def bigger_right(lst: list) -> list:
     stack_lst = []
@@ -41,8 +54,6 @@ def bigger_right(lst: list) -> list:
             result_lst[stack_lst.pop()] = lst[idx + 1]
              
     result_lst.append(-1)
-
-            
 
     return result_lst 
 
