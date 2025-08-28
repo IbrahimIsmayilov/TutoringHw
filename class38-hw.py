@@ -58,14 +58,32 @@ def count_occurence(lst: list[int], target: int) -> int:
 # Below are 2 ways in which you can implement count_occurence in a reccursive manner. Implement each of them individually.
 # As everything else, even if you cannot get the final answer, I expect you to submit the code that does not work (something is better than nothing).
 # Option 1
-# 1. How many times does target occur in the rest of the list after the first element?
-# 2. Add 1 if the first element matches the target, otherwise 0, to the answer from the smaller question.
-# 3. When the list is empty, return 0
+# 1. figure out the smaller questions. The smaller question is, how many occurences of the target occurs in the first and second half 
+# of the given list. Instead of checking a list by itself, divide into 2 lists or 2 smaller problems
+# 2. when you find an answer to smaller questions, how do u use them to find the answer to the current question.
+# Add the occurrences to return the total amount of occurences in the list
+# 3. when do we stop? Hitting the bottom of the reccursion. When the length of the given list is 1: Check if it is the 
+# target, if so return 1. Else return 0. If we continue dividing a list with a length of 1 element into 2 elements, we will run into an error
+
+def count_occurence(lst: list[int], target: int) -> int:
+    """
+    Returns total amount of target's occurences in the given list
+    """
+    if len(lst) == 1:
+        if lst[0] == target:
+            return 1
+        else:
+            return 0
+        
+    return count_occurence(lst[0:1], target) + count_occurence(lst[1:], target)
+
+print(count_occurence([1, 3, 4, 5, 3, 2, 1, 3, 4], 3))  # 3
+
 
 # Option 2
-# 1. How many times does target occur in the rest of the list after the first element?
-# 2. Add 1 if the first element matches the target, otherwise 0, to the answer from the smaller question.
-# 3. When the list is empty, return 0
+# 1. How many times does target occur in the rest of the list after the first element? The problem gets divided into 2 sub problems: how many times does target occur in the first element of the list, how many times does the target occur in the rest of the list after the first element
+# 2. The results of both sub problems are added to get the total occurences of the target
+# 3. when do we stop? Hitting the bottom of the reccursion. When the length of the given list is 1 (we are checking the first element): Check if it is the target, if so return 1. Else return 0
 
 # Leetcode
 # 1. https://leetcode.com/problems/baseball-game/description/
