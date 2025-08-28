@@ -4,11 +4,11 @@
 
 # Question
 # What is RAM?
-# RAM or Random Access Memory is a temporary storage that communicates between the Permanent Storage and the Central Processing Unit. Unlike Permanent Storages, Random Access Memory gets wiped after a session. Whenever any code is executed, it is a constant communication between RAM and the CPU, until the whole program is run. Programs are stored in the RAM while they are run. 
+# RAM or Random Access Memory is a temporary storage that communicates between the Permanent Storage and the Central Processing Unit. Unlike Permanent Storages, Random Access Memory gets wiped after a session. Whenever any code is executed, there is a constant communication between RAM and the CPU, until the whole program is run. Programs are stored in the RAM while they are run. 
 
 # Question
 # What is computer storage?
-# Computer storage is a physical piece of hardware within a computer where data can be stored permanently throughout different sessions. Unlike RAM, it does not lose any of its data when the computer is powered off, and it sends data to RAM which is then sent to the CPU whenever the computer runs any program.  
+# Computer storage is a physical piece of hardware within a computer where data can be stored permanently throughout different sessions. Unlike RAM, it does not lose any of its data when the computer is powered off, and it sends data to the RAM which is then sent to the CPU whenever the computer runs any program.  
 
 # Question
 # Where are computer files saved at?
@@ -25,8 +25,8 @@
 # A program is compromised of instructions for the computer and when it is run, a process or an instance of the program is created. Each instance has it owns dedicated memory space and resources allocated. Multiple processes can be created from a single program. An example of a program would be Visual Studio Code which is an IDE in which typically one folder and files within are available to code in. If I were to code in 2 different folders, I would have to open Visual Studio Code again and choose a different folder, hence causing there to now be 2 processes running of the same program, Visual Studio Code.
 
 # Question
-# Explain the ineration between CPU, RAM and Storage during the program's execution.
-# When any process is created, the RAM must get necessary files from the Storage that will need the logical abilities of the CPU. Line by line, the CPU processes and performs necessary calculations for the RAM and sends it back. The RAM then either has the choice to keep the file processed by CPU if any further operations are needed by the CPU or to send it back to slow storage for permanent use.
+# Explain the interaction between CPU, RAM and Storage during the program's execution.
+# When any process is created, the RAM must get necessary files from the Storage that will need the logical abilities of the CPU. Line by line, the CPU processes and performs necessary calculations for the RAM and sends it back. The RAM then either has the choice to keep the file processed by CPU if any further operations are needed by the CPU or to send it back to storage for permanent use.
 
 # Question
 # Name couple of companies that produced CPUs.
@@ -46,6 +46,9 @@
 
 # However you found answer to the above, good job. Now search the internet to find if there exists a command line tool to answer above 3 
 # questions. Use them an try to understand their output.
+
+# For CPU, Memory: system_profiler SPHardwareDataType
+# For storage: df -h
 
 
 # Question
