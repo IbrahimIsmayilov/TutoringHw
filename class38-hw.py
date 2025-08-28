@@ -85,5 +85,19 @@ print(count_occurence([1, 3, 4, 5, 3, 2, 1, 3, 4], 3))  # 3
 # 2. The results of both sub problems are added to get the total occurences of the target
 # 3. when do we stop? Hitting the bottom of the reccursion. When the length of the given list is 1 (we are checking the first element): Check if it is the target, if so return 1. Else return 0
 
+def count_occurence(lst: list[int], target: int) -> int:
+    """
+    Returns total amount of target's occurences in the given list
+    """
+    if len(lst) == 1:
+        if lst[0] == target:
+            return 1
+        else:
+            return 0
+        
+    return count_occurence(lst[:len(lst) // 2], target) + count_occurence(lst[len(lst) // 2:], target)
+
+print(count_occurence([1, 3, 4, 5, 3, 2, 1, 3, 4], 3))  # 3
+
 # Leetcode
 # 1. https://leetcode.com/problems/baseball-game/description/
