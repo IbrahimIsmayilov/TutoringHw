@@ -101,3 +101,40 @@ print(count_occurence([1, 3, 4, 5, 3, 2, 1, 3, 4], 3))  # 3
 
 # Leetcode
 # 1. https://leetcode.com/problems/baseball-game/description/
+
+# Intialize an empty list that the operations will be done to. Furthermore, intialize a sum variable that will be incremented as operations are done
+# Iterate through the operations and through conditional statements, execute each of the given operations starting from the left. Also keep a track of the new value that should be added to the sum, the new score, and update the sum with the new score after checking all the operations. Update 
+# Return the sum variable
+
+# It passede
+# Time Complexity: O(N), where N equals the length of the given Operations list
+def calPoints(operations: list[str]) -> int:
+    """
+    Iterates through operations or commands that create a list and returns the sum of the list
+    """
+    baseball_records_lst = []
+    scores_sum = 0
+    for idx in range(len(operations)):
+        if operations[idx].lstrip('-').isdigit():
+            new_score = int(operations[idx])
+            baseball_records_lst.append(new_score)
+        elif operations[idx] == 'D':
+            new_score = baseball_records_lst[-1] * 2
+            baseball_records_lst.append(new_score)
+        elif operations[idx] == 'C':
+            new_score = baseball_records_lst.pop() * -1
+        elif operations[idx] == "+":
+            new_score = baseball_records_lst[-1] + baseball_records_lst[-2]
+            baseball_records_lst.append(new_score)
+        
+        scores_sum += new_score
+
+    return scores_sum
+                
+
+
+print(calPoints(["5","2","C","D","+"]))  # 30
+
+            
+
+                
