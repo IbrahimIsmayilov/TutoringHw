@@ -6,7 +6,7 @@
 #  3. If a difference exists, then the value of new difference, a variable created to store the current max-min value is greater than 0. If it greater than the already known difference, then the difference variable is updated.
 #  4. Return the difference.
 
-#  Time Complexity: O(N), where N reperesents the size of the 
+#  Time Complexity: O(N), where N reperesents the size of the list. 
 
 """
 Finds the greatest difference between two integers in a list in which the greater value's index is to the right of the lesser value's index. Returns that difference.
@@ -36,6 +36,7 @@ def maxProfit(self, prices: list[int]) -> int:
 #  1. Create a dictionary
 #  2. Iterate through every element while iterating if any dictionary index is greater than 1, return True. Else return True.
 
+#  Time Complexity: O(N), where N represents the size of the list. 
 def containsDuplicate(self, nums: list[int]) -> bool:
     """
     Returns true if there are any duplicate elements (same integer values) in a list, false otherwise.
@@ -52,7 +53,38 @@ def containsDuplicate(self, nums: list[int]) -> bool:
 
 # 3. https://leetcode.com/problems/move-zeroes/description/?envType=problem-list-v2&envId=array
 
+#  1. Make a new empty list and save the size of the list in the parameter.
+#  2. Start iterating the list in the parameter and removing from the end like a stack. Whenever a non-zero value is encountered, add it to the new list. 
+#  3. Once the list given in the parameter is empty, append all the elements in the new list + 0's to match the size of the previous list
 
+#  Time Complexity: O(N), where N represents the length of the list. 
+def moveZeroes(self, nums: list[int]) -> None:
+        """
+        Do not return anything, and point to a list where all the 0's are the end. 
+        """
+        list_size = len(nums)
+        non_zero_list = []
+
+        for index in range(list_size) :
+            checked_elem = nums.pop()
+            if checked_elem != 0:
+                non_zero_list.append(checked_elem)
+        
+        
+        index = 0
+        while len(nums) != list_size:
+            if len(non_zero_list) > 0:
+                nums.append(non_zero_list.pop())
+            else:
+                nums.append(0)
+            
+
+                 
+
+           
+                      
+                
+        
 
 # Doubly Linked List
 # During the class we have talked about DoublyLinkedList data structure.
